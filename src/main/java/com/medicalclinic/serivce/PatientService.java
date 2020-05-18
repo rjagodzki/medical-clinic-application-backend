@@ -24,10 +24,5 @@ public class PatientService {
     public Patient savePatient(final Patient patient) {
         return patientRepository.save(patient);
     }
-    // FIXME: setStatus() ???
-    // TODO: A może by tak sortować listę po statusie? Na dole pacjenci z active = false, albo dodać jakieś filtry we front-endzie
-//
-//    public Patient setStatus(final Long id, final Boolean status) {
-//        return patientRepository.findById(id).s
-//    }
+
 }

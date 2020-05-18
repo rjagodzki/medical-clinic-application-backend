@@ -2,10 +2,11 @@ package com.medicalclinic.domain.dto;
 
 import com.medicalclinic.domain.entity.Doctor;
 import com.medicalclinic.domain.entity.Patient;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @AllArgsConstructor
@@ -16,9 +17,9 @@ public class AppointmentDto {
     private AppointmentType appointmentType;
     private LocalDate appointmentDate;
     private LocalTime appointmentTime;
-    private Patient patientDto;
-    private Doctor doctorDto;
     private LocalDate createdDate;
     private LocalTime createdTime;
+    private Patient patient;
+    private Doctor doctor;
 }
-// TODO: Zgodność z Appointment.java.
+

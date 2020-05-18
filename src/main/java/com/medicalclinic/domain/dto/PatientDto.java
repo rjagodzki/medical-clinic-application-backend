@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,6 +15,8 @@ public class PatientDto {
     private String lastName;
     private LocalDate dateOfBirth;
     private String placeOfBirth;
+    private String phoneNumber;
+    private String emailAddress;
+    private String authorizedPerson;
     private Boolean active;
 }
-// TODO: Zgodność z Patient.java

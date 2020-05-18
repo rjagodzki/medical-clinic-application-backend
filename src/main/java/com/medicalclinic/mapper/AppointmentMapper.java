@@ -15,10 +15,10 @@ public class AppointmentMapper {
                 appointmentDto.getAppointmentType(),
                 appointmentDto.getAppointmentDate(),
                 appointmentDto.getAppointmentTime(),
-                appointmentDto.getPatientDto(),
-                appointmentDto.getDoctorDto(),
                 appointmentDto.getCreatedDate(),
-                appointmentDto.getCreatedTime()
+                appointmentDto.getCreatedTime(),
+                appointmentDto.getPatient(),
+                appointmentDto.getDoctor()
         );
     }
 
@@ -28,10 +28,10 @@ public class AppointmentMapper {
                 appointment.getAppointmentType(),
                 appointment.getAppointmentDate(),
                 appointment.getAppointmentTime(),
-                appointment.getPatient(),
-                appointment.getDoctor(),
                 appointment.getCreatedDate(),
-                appointment.getCreatedTime()
+                appointment.getCreatedTime(),
+                appointment.getPatient(),
+                appointment.getDoctor()
         );
     }
 
@@ -42,10 +42,10 @@ public class AppointmentMapper {
                         appointment.getAppointmentType(),
                         appointment.getAppointmentDate(),
                         appointment.getAppointmentTime(),
-                        appointment.getPatient(),
-                        appointment.getDoctor(),
                         appointment.getCreatedDate(),
-                        appointment.getCreatedTime()))
+                        appointment.getCreatedTime(),
+                        appointment.getPatient(),
+                        appointment.getDoctor()))
                 .collect(Collectors.toList());
     }
 }

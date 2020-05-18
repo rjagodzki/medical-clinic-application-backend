@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Getter
-@Setter
 @Entity(name = "PATIENTS")
 public class Patient {
 
@@ -47,6 +47,21 @@ public class Patient {
 
     @NonNull
     @NotNull
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
+
+    @NonNull
+    @NotNull
+    @Column(name = "EMAIL_ADDRESS")
+    private String emailAddress;
+
+    @NonNull
+    @NotNull
+    @Column(name = "AUTHORIZED_PERSON")
+    private String authorizedPerson;
+
+    @NonNull
+    @NotNull
     @Column(name = "ACTIVE")
     private Boolean active;
 
@@ -58,13 +73,23 @@ public class Patient {
     )
     public List<Appointment> patientAppointments = new ArrayList<>();
 
+    public Patient(Long patientId, String firstName, String lastName, LocalDate dateOfBirth, String placeOfBirth, String phoneNumber, String emailAddress, String authorizedPerson, Boolean active) {
+        this.patientId = patientId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.placeOfBirth = placeOfBirth;
+        this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
+        this.authorizedPerson = authorizedPerson;
+        this.active = active;
+    }
+
+
     @PrePersist
     public void setActive() {
         this.active = true;
     }
 
-    // TODO: Pomyśl nad innymi polami: co zrobić z miejscem zamieszkania? czy stworzyć nową encje, do której dostęp będą mieli również lekarze i inni pracownicy?
-
-    // TODO: Jakie relacje?
 
 }

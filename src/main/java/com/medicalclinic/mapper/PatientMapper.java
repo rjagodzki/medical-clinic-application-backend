@@ -11,10 +11,14 @@ import java.util.stream.Collectors;
 public class PatientMapper {
     public Patient mapToPatient(final PatientDto patientDto) {
         return new Patient(
+                patientDto.getPatientId(),
                 patientDto.getFirstName(),
                 patientDto.getLastName(),
                 patientDto.getDateOfBirth(),
                 patientDto.getPlaceOfBirth(),
+                patientDto.getPhoneNumber(),
+                patientDto.getEmailAddress(),
+                patientDto.getAuthorizedPerson(),
                 patientDto.getActive()
         );
     }
@@ -26,6 +30,9 @@ public class PatientMapper {
                 patient.getLastName(),
                 patient.getDateOfBirth(),
                 patient.getPlaceOfBirth(),
+                patient.getPhoneNumber(),
+                patient.getEmailAddress(),
+                patient.getAuthorizedPerson(),
                 patient.getActive()
         );
     }
@@ -38,6 +45,9 @@ public class PatientMapper {
                         patient.getLastName(),
                         patient.getDateOfBirth(),
                         patient.getPlaceOfBirth(),
+                        patient.getPhoneNumber(),
+                        patient.getEmailAddress(),
+                        patient.getAuthorizedPerson(),
                         patient.getActive()))
                 .collect(Collectors.toList());
     }

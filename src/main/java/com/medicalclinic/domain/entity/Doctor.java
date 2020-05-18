@@ -15,7 +15,7 @@ public class Doctor {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "DOCTOR_ID")
+    @Column(name = "DOCTOR_ID", unique = true)
     private Long doctorId;
 
     @NotNull

@@ -38,7 +38,12 @@ public class DoctorController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/doctor/{doctorId}")
-    public void deleteDoctor(@PathVariable Long doctorId) throws NotFoundException {
+    public void deleteDoctor(@PathVariable Long doctorId) {
         doctorService.removeDoctor(doctorId);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/doctor")
+    public DoctorDto updateDoctor(@RequestBody DoctorDto doctorDto) {
+        return doctorMapper.mapToDoctorDto(doctorService.saveDoctor(doctorMapper.mapToDoctor(doctorDto)));
     }
 }

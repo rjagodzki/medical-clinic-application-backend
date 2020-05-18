@@ -1,6 +1,6 @@
 package com.medicalclinic.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.*;
 import com.medicalclinic.domain.dto.AppointmentType;
 import com.medicalclinic.domain.dto.DoctorDto;
 import com.medicalclinic.domain.dto.PatientDto;
@@ -17,6 +17,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@JsonIgnoreProperties(value = {"createdDate", "createdTime"}, allowGetters = true)
 @Entity(name = "APPOINTMENTS")
 public class Appointment {
     @Id
@@ -37,14 +38,6 @@ public class Appointment {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "hh:mm")
     private LocalTime appointmentTime;
 
-    @ManyToOne
-    @JoinColumn(name = "PATIENT")
-    public Patient patient;
-
-    @ManyToOne
-    @JoinColumn(name = "DOCTOR")
-    public Doctor doctor;
-
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Column(name = "CREATED_DATE")
     private LocalDate createdDate;
@@ -52,6 +45,14 @@ public class Appointment {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "hh:mm")
     @Column(name = "CREATED_TIME")
     private LocalTime createdTime;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PATIENT")
+    public Patient patient;
+
+    @ManyToOne
+    @JoinColumn(name = "DOCTOR")
+    public Doctor doctor;
 
     @PrePersist
     void setCreatedDateAndTime() {
